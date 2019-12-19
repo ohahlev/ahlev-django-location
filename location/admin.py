@@ -13,17 +13,15 @@ class LocationAdmin(admin.ModelAdmin):
             'fields': ['preview'],
         }),
     ]
-
     class Media:
         css = {
         'all': (
-            'css/location.css',
+            'location/css/location.css',
             )
         }
         js = (
-            'js/location.js',
+            'location/js/location.js',
         )
-    
     def preview(self, obj):
         return obj.preview()
 

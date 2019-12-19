@@ -5,7 +5,7 @@ var latitude_element;
 var longitude_element;
 
 function create_marker(latitude, longitude) {
-    if(!map) return;
+    if (!map) return;
     marker = new google.maps.Marker({
         map: map,
         animation: google.maps.Animation.DROP,
@@ -19,32 +19,35 @@ function create_marker(latitude, longitude) {
 }
 
 function on_location_change() {
-    if(!map) return;
+    if (!map) return;
 
-    if(marker) {
+    if (marker) {
         marker.setMap(null);
         marker = null;
     }
-    
-    if(!latitude_element || !longitude_element) {
+
+    if (!latitude_element || !longitude_element) {
         create_marker(11.562108, 104.888535);
         return;
-    } 
+    }
 
     var latitude = parseFloat(latitude_element.val());
-    if(!latitude) return;
+    if (!latitude) return;
 
     var longitude = parseFloat(longitude_element.val());
-    if(!longitude) return;
+    if (!longitude) return;
 
     create_marker(latitude, longitude);
 }
 
 function init_map() {
-    map = new google.maps.Map(document.getElementById('ahlev-map'), {
-        zoom: 13,
-    });
-    on_location_change();
+    setTimeout(function () {
+        var element = document.getElementById('ahlev-map');
+        map = new google.maps.Map(element, {
+            zoom: 13,
+        });
+        on_location_change();
+    }, 2000);
 }
 
 function toggleBounce() {
@@ -56,11 +59,17 @@ function toggleBounce() {
 }
 
 $(document).ready(function () {
+
     form = $("form#location_form");
     latitude_element = form.find("input#id_latitude");
     longitude_element = form.find("input#id_longitude");
 
-    if(!form || !latitude_element || !longitude_element) return;
+    if (!form || !latitude_element || !longitude_element) return;
+
+    // remove label preview
+    var field_preview = form.find("div.field-preview");
+    var label = field_preview.find("label");
+    label.remove();
 
     on_location_change();
 
