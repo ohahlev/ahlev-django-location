@@ -1,6 +1,6 @@
 var map;
 var marker;
-var div;
+var form;
 var latitude_element;
 var longitude_element;
 
@@ -18,7 +18,7 @@ function create_marker(latitude, longitude) {
     map.setZoom(6.0);
 }
 
-function show_map() {
+function on_location_change() {
     if (!map) return;
 
     if (marker) {
@@ -31,10 +31,10 @@ function show_map() {
         return;
     }
 
-    var latitude = parseFloat(latitude_element.value);
+    var latitude = parseFloat(latitude_element.val());
     if (!latitude) return;
 
-    var longitude = parseFloat(longitude_element.value);
+    var longitude = parseFloat(longitude_element.val());
     if (!longitude) return;
 
     create_marker(latitude, longitude);
@@ -42,11 +42,11 @@ function show_map() {
 
 function init_map() {
     setTimeout(function () {
-        var element = document.getElementById('location-map');
+        var element = document.getElementById('ahlev-map');
         map = new google.maps.Map(element, {
             zoom: 13,
         });
-        show_map();
+        on_location_change();
     }, 2000);
 }
 
@@ -59,9 +59,20 @@ function toggleBounce() {
 }
 
 $(document).ready(function () {
-    div = $("div#location-map");
-    if(!div) return;
 
-    latitude_element = div[0].attributes.latitude;
-    longitude_element = div[0].attributes.longitude;
+    form = $("form#location_form");
+    latitude_element = form.find("input#id_latitude");
+    longitude_element = form.find("input#id_longitude");
+
+    if (!form || !latitude_element || !longitude_element) return;
+
+    // remove label preview
+    var field_preview = form.find("div.field-preview");
+    var label = field_preview.find("label");
+    label.remove();
+
+    on_location_change();
+
+    latitude_element.change(on_location_change);
+    longitude_element.change(on_location_change);
 });

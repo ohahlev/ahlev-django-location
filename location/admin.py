@@ -20,7 +20,7 @@ class LocationAdmin(admin.ModelAdmin):
             )
         }
         js = (
-            'location/js/location.js',
+            'location/js/location-admin.js',
         )
     def preview(self, obj):
         return obj.preview()

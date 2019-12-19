@@ -1,3 +1,19 @@
 {% extends 'css_js/base.html' %}
+{% load static %}
+{% block extra %}
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDbr6x5lbYq7WTHCdzY3f8VLGzoIGLXfJM&callback=init_map'></script>
+<link rel="stylesheet" href="{% static 'location/css/location.css' %}">
+<script type="text/javascript" src="{% static 'location/js/location.js' %}"></script>
+{% endblock %}
 {% block main_content %}
+<div class="container my-5 z-depth-1">
+    <section class="dark-grey-text">
+        <div class="row pr-lg-5">
+            <div style="height: 400px;">
+            {% include 'location/partials/location.html' with location=location %}    
+            </div>
+        </div>
+    </section>
+</div>
+</div>
 {% endblock %}

@@ -3,10 +3,19 @@
     height: 400px;
 }
 
+#location-map {
+    width: 100%;
+    height: 400px;
+}
+
 .field-preview {
     height: 400px !important;
 }
 
 .form-row {
+    display: unset !important;
+}
+
+.row {
     display: unset !important;
 }
