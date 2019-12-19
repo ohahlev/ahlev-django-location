@@ -1,0 +1,8 @@
+#ahlev-map {
+    width: 100%; 
+    height: 400px;
+}
+
+.field-preview {
+    height: 400px !important;
+}

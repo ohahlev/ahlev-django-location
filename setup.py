@@ -13,6 +13,9 @@ setup(
     include_package_data=True,
     url='https://github.com/ohahlev/ahlev-django-location/tree/%s' % location.__version__,
     packages=find_packages(),
+    install_requires=[
+        'django-tinymce',
+    ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
