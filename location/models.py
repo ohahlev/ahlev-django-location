@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.text import Truncator
 from django.utils.html import format_html
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -21,6 +20,7 @@ def validate_longitude(value):
 
 class Location(models.Model):
     name = models.CharField(max_length=32, unique=True, blank=False)
+    address = models.CharField(max_length=32, unique=True, blank=False)
     latitude = models.FloatField(blank=False, validators=[validate_latitude])
     longitude = models.FloatField(blank=False, validators=[validate_longitude])
     detail = HTMLField()
@@ -41,6 +41,7 @@ class Location(models.Model):
 
     def preview(self):
         return format_html('''
+        
         <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDbr6x5lbYq7WTHCdzY3f8VLGzoIGLXfJM&callback=init_map'></script>
         <div id='ahlev-map'></div>
         ''')

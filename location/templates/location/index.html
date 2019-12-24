@@ -1,8 +1,10 @@
 {% extends 'css_js/base.html' %}
 {% load static %}
-{% block extra %}
-<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDbr6x5lbYq7WTHCdzY3f8VLGzoIGLXfJM&callback=init_map'></script>
+{% block extracss %}
 <link rel="stylesheet" href="{% static 'location/css/location.css' %}">
+{% endblock%}
+{% block extrajs %}
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDbr6x5lbYq7WTHCdzY3f8VLGzoIGLXfJM&callback=init_map'></script>
 <script type="text/javascript" src="{% static 'location/js/location.js' %}"></script>
 {% endblock %}
 {% block main_content %}

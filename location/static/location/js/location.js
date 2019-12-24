@@ -43,6 +43,7 @@ function show_map() {
 function init_map() {
     setTimeout(function () {
         var element = document.getElementById('location-map');
+        if(!element) return;
         map = new google.maps.Map(element, {
             zoom: 13,
         });
@@ -62,6 +63,7 @@ $(document).ready(function () {
     div = $("div#location-map");
     if(!div) return;
 
+    if(!div[0]) return;
     latitude_element = div[0].attributes.latitude;
     longitude_element = div[0].attributes.longitude;
 });

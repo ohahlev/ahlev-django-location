@@ -43,6 +43,7 @@ function on_location_change() {
 function init_map() {
     setTimeout(function () {
         var element = document.getElementById('ahlev-map');
+        if(!element) return;
         map = new google.maps.Map(element, {
             zoom: 13,
         });
