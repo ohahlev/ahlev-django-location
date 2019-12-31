@@ -33,9 +33,7 @@ pip install dist/ahlev-django-location-0.0.1.tar.gz
 
 ## install from pypi
 ### go to the project directory and install from pypi
-```
-pip install -i https://test.pypi.org/simple/ ahlev-django-location
-```
+[ahlev-django-location](https://pypi.org/project/ahlev-django-location/)
 
 ## project configuration
 ### update settings.py as the following
