@@ -4,5 +4,5 @@ from . import __version__ as VERSION
 
 class LocationConfig(AppConfig):
     name = 'location'
-    verbose_name = format_html("Location Management <span class='version'>{}</span>", VERSION)
+    verbose_name = format_html("Location Management {}", VERSION)
     
