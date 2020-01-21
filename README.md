@@ -23,12 +23,19 @@ cd ahlev-django-location
 
 ### create installer package
 ```
-python3 setup.py sdist
+make package
 ```
 
-### go to project directory
+### install package
+Let's say ahlev-django-location directory is in the same level as the project directory.
+
+cd into project directory
 ```
-pip install dist/ahlev-django-location-0.0.1.tar.gz
+cd ../my_project_dir
+```
+install ahlev-django-location from the project directory
+```
+pip install ../ahlev-django-location/dist/ahlev-django-location-0.0.1.tar.gz
 ```
 
 ## install from pypi
